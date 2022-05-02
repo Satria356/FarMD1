@@ -20,26 +20,34 @@ function toCommas(x) {
 }
 exports.allmenu = (sender, prefix, pushname, isOwner, isPremium, balance, limit, limitCount, glimit, gcount) => {
 	return `
-           │─( ${setting.botName} )─│
+               _${setting.botName}_
 ${ucapanWaktu} ${pushname !== undefined ? pushname : 'Kak'}
  _Library_ : *Baileys-MD*. _FARR-MD By Fahri_
  _Prefix_ : ( ${prefix} )
  *Tanggal Server* : ${moment.tz('Asia/Jakarta').format('DD/MM/YY')}
  *Waktu Server*    : ${moment.tz('Asia/Jakarta').format('HH:mm:ss')}
 
- ❒Status : ${isOwner ? 'Owner' : isPremium ? 'Premium' : 'Free'}
- ❒Limit Harian : ${isOwner ? '-' : isPremium ? 'Unlimited' : getLimit(sender, limitCount, limit)}
- ❒➥Limit Game : ${isOwner ? '-' : cekGLimit(sender, gcount, glimit)}
- ❒➥Balance : $${toCommas(getBalance(sender, balance))}
+_⫹⫺ Status : ${isOwner ? 'Owner' : isPremium ? 'Premium' : 'Free'}
+_⫹⫺ Limit Harian : ${isOwner ? '-' : isPremium ? 'Unlimited' : getLimit(sender, limitCount, limit)}
+_⫹⫺ Limit Game : ${isOwner ? '-' : cekGLimit(sender, gcount, glimit)}
+_⫹⫺Balance : $${toCommas(getBalance(sender, balance))}
   
  Ada Bug? Ketik ${prefix}report Bug
  ${readmore}
-┌─────────[❒➥ *FAR-MD*
+┌─────────[❒ *FAR-MD*
 │───❒➥ *MainMenu*
-│ ${prefix}menu
+│❒ ${prefix}menu
 │❒ ${prefix}owner
 │❒ ${prefix}donasi
 │❒ ${prefix}speed
+│❒ ${prefix}listvn
+│❒ ${prefix}gojo
+│❒ ${prefix}bocilepep
+│❒ ${prefix}uwu
+│❒ ${prefix}meme
+│❒ ${prefix}ghost
+│❒ ${prefix}help
+│❒ ${prefix}permen
 │❒ ${prefix}runtime
 │❒ ${prefix}cekprem
 │❒ ${prefix}listprem
@@ -66,10 +74,10 @@ ${ucapanWaktu} ${pushname !== undefined ? pushname : 'Kak'}
 │❒ ${prefix}yaoi
 │───❒➥ *Search Menu*
 │❒ ${prefix}ytsearch <Pencarian>
+│❒ ${prefix}grupwa <Pencarian>
 │❒ ${prefix}pinterest <querry>
 │❒ ${prefix}jadwaltv <querry>
 │❒ ${prefix}brainly <querry>
-│❒ ${prefix}lagu <query>
 │───❒➥ *GameMenu*
 │❒ ${prefix}tictactoe @tag
 │❒ ${prefix}delttc
@@ -124,7 +132,7 @@ ${ucapanWaktu} ${pushname !== undefined ? pushname : 'Kak'}
 │❒ ${prefix}summersand
 │❒ ${prefix}horrorblood
 │❒ ${prefix}thunder
-│───❒➥ *️Random Text*
+│───❒➥ *Text Random*
 │❒ ${prefix}pantun
 │───❒➥ *Primbon Menu*
 │❒ ${prefix}nomorhoki

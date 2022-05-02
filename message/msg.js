@@ -420,14 +420,14 @@ var buatpesan = await generateWAMessageFromContent(from, {
         "hydratedButtons": [
           {
             "urlButton": {
-              "displayText": "𝚈𝚘𝚞𝚝𝚞𝚋𝚎",
-              "url": "https://youtube.com/channel/UCSAcYW8MkFyaVQza3q5Q"
+              "displayText": "By ᴹᴿ᭄Fahri",
+              "url": "kenapa bang? mau chat? chat aja nih nomer gw 083811034750 "
             }
           },
           {
             "callButton": {
-              "displayText": "𝙾𝚠𝚗𝚎𝚛",
-              "phoneNumber": "6283811034750"
+              "displayText": "MY-GITHUB",
+              "phoneNumber": "https://github.com/Satria356"
             }
           },
           {
@@ -979,6 +979,43 @@ case prefix+'emojimix': {
 		}
 	    }
 	    break
+			case prefix+'grupwa': case prefix+'searchgrup':
+			    if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+				if (args.length < 2) return reply(`Kirim perintah ${command} nama grup`)
+				reply(mess.wait)
+			    hxz.linkwa(q).then(async(data) => {
+				  if (data.length == 0) return reply(`Grup ${q} tidak ditemukan`)
+				  var teks = `*Hasil Pencarian Dari ${q}*\n\n`
+				  for (let x of data) {
+					teks += `*Nama :* ${x.nama}\n*Link :* ${x.link}\n\n`
+				  }
+				  reply(teks)
+				  limitAdd(sender, limit)
+				}).catch(() => reply(mess.error.api))
+			    break
+			case prefix+'pinterest':
+			    if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+				if (args.length < 2) return reply(`Kirim perintah ${command} query atau ${command} query --jumlah\nContoh :\n${command} cecan atau ${command} cecan --10`)
+				reply(mess.wait)
+			    var jumlah;
+			    if (q.includes('--')) jumlah = q.split('--')[1]
+			    pinterest(q.replace('--'+jumlah, '')).then(async(data) => {
+				  if (q.includes('--')) {
+					if (data.result.length < jumlah) {
+					  jumlah = data.result.length
+					  reply(`Hanya ditemukan ${data.result.length}, foto segera dikirim`)
+					}
+					for (let i = 0; i < jumlah; i++) {
+					  conn.sendMessage(from, { image: { url: data.result[i] }})
+					}
+				    limitAdd(sender, limit)
+				  } else {
+					var but = [{buttonId: `${command} ${q}`, buttonText: { displayText: 'Next Photo' }, type: 1 }]
+					conn.sendMessage(from, { caption: `Hasil pencarian dari ${q}`, image: { url: pickRandom(data.result) }, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, { quoted: msg })
+				    limitAdd(sender, limit)
+				  }
+				})
+			    break
 	    
 case prefix+'menu':
 var teks = allmenu(sender, prefix, pushname, isOwner, isPremium, balance, limit, limitCount, glimit, gcount)
@@ -1038,27 +1075,88 @@ case prefix+'donasiah':
 			  conn.sendMessage(from, { audio: fs.readFileSync('audio/WindahBengsin.m4a'), mimetype: 'audio/mp4', ptt: true}, {quoted: msg})
 			    var teks = allmenu(sender, prefix, pushname, isOwner, isPremium, balance, limit, limitCount, glimit, gcount)
 			   break
+			   // Main Menu
+			case prefix+'menu':
+			case prefix+'meme':
+			  conn.sendMessage(from, { audio: fs.readFileSync('audio/meme.mp3'), mimetype: 'audio/mp4', ptt: true}, {quoted: msg})
+			  break
+			  // Main Menu
+			case prefix+'menu':
+			case prefix+'permen':
+			  conn.sendMessage(from, { audio: fs.readFileSync('audio/permen.mp3'), mimetype: 'audio/mp4', ptt: true}, {quoted: msg})
+			  break
+			  // Main Menu
+			case prefix+'menu':
+			case prefix+'yowaimo':
+			  conn.sendMessage(from, { audio: fs.readFileSync('audio/yowaimo.mp3'), mimetype: 'audio/mp4', ptt: true}, {quoted: msg})
+			  break
+			  // Main Menu
+			case prefix+'menu':
+			case prefix+'bocilepep':
+			  conn.sendMessage(from, { audio: fs.readFileSync('audio/bocilepep.mp3'), mimetype: 'audio/mp4', ptt: true}, {quoted: msg})
+			  break
+			  // Main Menu
+			case prefix+'menu':
+			case prefix+'ricola':
+			  conn.sendMessage(from, { audio: fs.readFileSync('audio/ricola.mp3'), mimetype: 'audio/mp4', ptt: true}, {quoted: msg})
+			  break 
+			  // Main Menu
+			case prefix+'menu':
+			case prefix+'farbot':
+			  conn.sendMessage(from, { audio: fs.readFileSync('audio/farbot.mp3'), mimetype: 'audio/mp4', ptt: true}, {quoted: msg})
+			  break 
+			case prefix+'menu':
+			case prefix+'ghost':
+			  conn.sendMessage(from, { audio: fs.readFileSync('audio/ghost.mp3'), mimetype: 'audio/mp4', ptt: true}, {quoted: msg})
+			  break
+// Main Menu
+			case prefix+'menu':
+			case prefix+'ah':
+			  conn.sendMessage(from, { audio: fs.readFileSync('audio/dande.mp3'), mimetype: 'audio/mp4', ptt: true}, {quoted: msg})
+			  break
+			 // Main Menu
+			case prefix+'menu':
+			case prefix+'uwu':
+			  conn.sendMessage(from, { audio: fs.readFileSync('audio/uwuw.mp3'), mimetype: 'audio/mp4', ptt: true}, {quoted: msg})
+			  break
+			  // Main Menu
+			case prefix+'menu':
+			case prefix+'gojo':
+			  conn.sendMessage(from, { audio: fs.readFileSync('audio/lemah.mp3'), mimetype: 'audio/mp4', ptt: true}, {quoted: msg})
+			  break
+			case prefix+'menu':
+			case prefix+'wibu':
+			  conn.sendMessage(from, { audio: fs.readFileSync('audio/wibu.mp3'), mimetype: 'audio/mp4', ptt: true}, {quoted: msg})
+			  break
+			case prefix+'menu':
+			case prefix+'arigato':
+			  conn.sendMessage(from, { audio: fs.readFileSync('audio/arigato.mp3'), mimetype: 'audio/mp4', ptt: true}, {quoted: msg})
+			  break  		   
 case prefix+'donasi':
-  case prefix+'donate':
+  case prefix+'listvn':
   var donasibut = [
 			{ callButton: { displayText: `Owner-Number`, phoneNumber: `${setting.ownerNumber}` } },
 			{ urlButton: { displayText: `OFFICIAL-GROUP`, url : `https://chat.whatsapp.com/HoA34yrBsNRAhZH4TKxqhp` } },
 			{ quickReplyButton: { displayText: `Aku Ingin Donasi`, id: `${prefix}donasiah` } },
 		]
-var teks = `  │
-  ├─ ❏ OVO
-  ├─ ❏ ${ovo}
-  ├─ ❏ DANA
-  ├─ ❏ ${dana}
-  ├─ ❏ PULSA
-  ├─ ❏ ${pulsa}
-  ├─ ❏ PULSA2
-  ├─ ❏ ${pulsa2}
-  ├─ ❏ INSTAGRAM
-  └─ ❏ https://www.instagram.com/${ig}
-  
-  Donasi Untuk Upgrade Ke Fitur Premium
-  Note : Donasi Seikhlasnya`
+var teks = `  │  *LIST VN BOT FARR*
+  ├─ ❏ .gojo
+  ├─ ❏ .ghost
+  ├─ ❏ .meme
+  ├─ ❏ .uwu
+  ├─ ❏ .ah
+  ├─ ❏ .farbot
+  ├─ ❏ .onichan
+  ├─ ❏ .help
+  ├─ ❏ .yowaimo
+  ├─ ❏ .permen
+  ├─ ❏ .wibu
+  ├─ ❏ .bocilepep
+  └─ ❏ .arigato
+  SC: https://github.com/Satria356/FarMD1
+  JANGAN LUPA DONASI ANJINK
+  Donasi dana/gopay/ovo=083168004413
+  Note : yowaimo`
  conn.sendMessage(from, { caption: teks, image: {url: `https://i.ibb.co/CPcFJ6c/IMG-20220131-WA0504.jpg`}, templateButtons: donasibut, footer: 'FAR-MD', mentions: [sender]} )  
 			    break
 case prefix+'sewa':
@@ -1073,11 +1171,11 @@ _Yakin kamu mau daftar ke premium?_
 - Tidak Ada Kata ~Limit Menurun~
 - Transfer Limit Game
 
-*LIST DAFTAR PREMIUM*
+ ~LIST DAFTAR PREMIUM~
 •NOTE: bot sekarang dalam status
  free atau gratis silahkan hubungi
  owner untuk masukan bot ke grup
- WhatsApp kalian.wa.me/6283811034750
+ WhatsApp kalian wa.me/6283811034750
  
 - Rp.10.000 - Perbulan
 - Rp.15.000 - Dua Bulan
@@ -1088,12 +1186,12 @@ _Yakin kamu mau daftar ke premium?_
 			    reply(runtime(process.uptime()))
 			    break
 case prefix+'groupfar':
-  reply("Group 1\n\nhttps://chat.whatsapp.com/HoA34yrBsNRAhZH4TKxqhp")
+  reply("Group 1\n\nhttps://chat.whatsapp.com/HqALA51aiURFp4O3BfWlw4")
   break
 			case prefix+'speed':
 			    let timestamp = speed();
                             let latensi = speed() - timestamp
-                            textImg(`${latensi.toFixed(4)} Second`)
+                            textImg(`${latensi.toFixed(4)} Second`)                             
 		            break
 case prefix+'infobot':
   case prefix+'inforobot':
@@ -1945,7 +2043,6 @@ limitAdd(sender, limit)
 				conn.sendMessage(from, { text: q ? q : '', mentions: mem })
 			    break
 case prefix+'kick':
-  if (!isOwner)return reply("_Maaf Fitur Ini Di Nonaktifkan Oleh Owner, Karena menyebabkan nomer bot 3 kali ke banned_")
     if (!isGroup) return reply(mess.OnlyGrup)
     if (!isGroupAdmins) return reply(mess.GrupAdmin)
     if (!isBotGroupAdmins) return reply(mess.BotAdmin)
@@ -1966,7 +2063,6 @@ case prefix+'kick':
     break
 
 case prefix+'add':
-  if (!isOwner)return reply("_Maaf Fitur Ini Di Nonaktifkan Oleh Owner, Karena menyebabkan nomer bot 3 kali ke banned_")
     if (!isGroup) return reply(mess.OnlyGrup)
     if (!isGroupAdmins) return reply(mess.GrupAdmin)
     if (!isBotGroupAdmins) return reply(mess.BotAdmin)
